@@ -8,10 +8,27 @@ function Graph() {
         fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=120')
             .then(res => res.json())
             .then(data => {
-                setData(data);
-                console.log(data)
+                const chartData = buildChartData(data);
+                setData(chartData);
             });
-    }, [])
+    }, []);
+
+    const buildChartData = (data, caseType = 'cases') => {
+        const chartData = [];
+        let lastDataPoint;
+
+        data[caseType].forEach(date => {
+            if (lastDataPoint) {
+                const newDataPoint = {
+                    x: date,
+                    y: data[caseType][date] - lastDataPoint
+                }
+                chartData.push(newDataPoint);
+            }
+            lastDataPoint = data[caseType][date];
+        });
+        return chartData;
+    };
 
     return (
         <div>
