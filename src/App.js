@@ -4,7 +4,7 @@ import InfoBox from './InfoBox';
 import Map from './Map';
 import Table from './Table';
 import Graph from './Graph';
-import { sortData } from './util';
+import { sortData, prettyPrintStat } from './util';
 import "leaflet/dist/leaflet.css"
 import '../src/App.css';
 
@@ -84,9 +84,9 @@ function App() {
           </FormControl>
         </div>
         <div className="app-stats">
-          <InfoBox title="Coronavirus Cases" cases={countryInfo.todayCases} total={countryInfo.cases}></InfoBox>
-          <InfoBox title="Recovered" cases={countryInfo.todayRecovered} total={countryInfo.recovered}></InfoBox>
-          <InfoBox title="Deaths" cases={countryInfo.todayDeaths} total={countryInfo.deaths}></InfoBox>
+          <InfoBox title="Coronavirus Cases" cases={prettyPrintStat(countryInfo.todayCases)} total={prettyPrintStat(countryInfo.cases)}></InfoBox>
+          <InfoBox title="Recovered" cases={prettyPrintStat(countryInfo.todayRecovered)} total={prettyPrintStat(countryInfo.recovered)}></InfoBox>
+          <InfoBox title="Deaths" cases={prettyPrintStat(countryInfo.todayDeaths)} total={prettyPrintStat(countryInfo.deaths)}></InfoBox>
         </div>
 
         <Map
@@ -108,4 +108,4 @@ function App() {
 }
 
 export default App;
-//************LAST MINUTE 2.40.00 */
+//************LAST MINUTE 3.55.00 */
