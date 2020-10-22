@@ -2,24 +2,28 @@
     height: 500px;
     background-color: white;
     padding: 1rem;
-    border-radius: 10px;
+    border-radius: 4px;
     margin-top: 16px;
     box-shadow: 0 0 8px -4px rgba(0,0,0,0.5);
 }
 
 .map .leaflet-container {
     height: 100%;
+    border-radius: 10px
 }
 
 .info-flag img {
     width: 100px;
-    border-radius: 3px;
+    border-radius: 2px;
 }
 .info-name {
     font-size: 20px;
     font-weight: bold;
     color: #555;
 }
+.info-container {
+    width: 150px;
+  }
 
 .info-flag {
     height: 80px;
@@ -33,3 +37,9 @@
     font-size: 16px;
     margin-top: 5px;
 }
+
+@media (max-width: 990px) {
+    .map {
+        margin-bottom: 20px;
+    }
+  }

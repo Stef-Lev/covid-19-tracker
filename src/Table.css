@@ -10,6 +10,7 @@
 
 .table td {
     padding: 0.5rem;
+    border: none;
 }
 
 .table tr:nth-of-type(odd) {

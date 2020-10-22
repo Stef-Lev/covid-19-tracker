@@ -85,7 +85,7 @@ function App() {
           </FormControl>
         </div>
         <div className="app-stats">
-          <InfoBox isRed title="Coronavirus Cases" cases={prettyPrintStat(countryInfo.todayCases)} total={prettyPrintStat(countryInfo.cases)} onClick={e => setCasesType('cases')}
+          <InfoBox isRed title="Cases" cases={prettyPrintStat(countryInfo.todayCases)} total={prettyPrintStat(countryInfo.cases)} onClick={e => setCasesType('cases')}
             active={casesType === 'cases'}></InfoBox>
           <InfoBox title="Recovered" cases={prettyPrintStat(countryInfo.todayRecovered)} total={prettyPrintStat(countryInfo.recovered)} onClick={e => setCasesType('recovered')}
             active={casesType === 'recovered'}></InfoBox>
@@ -104,8 +104,8 @@ function App() {
         <CardContent>
           <h3>Live Cases by Country</h3>
           <Table countries={tableData} />
-          <h3>Worldwide new {casesType} </h3>
-          <Graph casesType={casesType} />
+          <h3 className="app-graphTitle" >Worldwide new {casesType} </h3>
+          <Graph className="app-graph" casesType={casesType} />
         </CardContent>
       </Card>
     </div>
