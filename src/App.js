@@ -16,6 +16,7 @@ function App() {
   const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
   const [mapZoom, setMapZoom] = useState(2);
   const [mapCountries, setMapCountries] = useState([]);
+  const [casesType, setCasesType] = useState('cases');
 
   //Get worldwide data
   useEffect(() => {
@@ -67,7 +68,7 @@ function App() {
       })
   };
 
-  console.log('>>>>>>>>>', countryInfo)
+  console.log('>>>>>>>>>', countryInfo);
 
   return (
     <div className="app">
@@ -84,12 +85,16 @@ function App() {
           </FormControl>
         </div>
         <div className="app-stats">
-          <InfoBox title="Coronavirus Cases" cases={prettyPrintStat(countryInfo.todayCases)} total={prettyPrintStat(countryInfo.cases)}></InfoBox>
-          <InfoBox title="Recovered" cases={prettyPrintStat(countryInfo.todayRecovered)} total={prettyPrintStat(countryInfo.recovered)}></InfoBox>
-          <InfoBox title="Deaths" cases={prettyPrintStat(countryInfo.todayDeaths)} total={prettyPrintStat(countryInfo.deaths)}></InfoBox>
+          <InfoBox isRed title="Coronavirus Cases" cases={prettyPrintStat(countryInfo.todayCases)} total={prettyPrintStat(countryInfo.cases)} onClick={e => setCasesType('cases')}
+            active={casesType === 'cases'}></InfoBox>
+          <InfoBox title="Recovered" cases={prettyPrintStat(countryInfo.todayRecovered)} total={prettyPrintStat(countryInfo.recovered)} onClick={e => setCasesType('recovered')}
+            active={casesType === 'recovered'}></InfoBox>
+          <InfoBox isRed title="Deaths" cases={prettyPrintStat(countryInfo.todayDeaths)} total={prettyPrintStat(countryInfo.deaths)} onClick={e => setCasesType('deaths')}
+            active={casesType === 'deaths'}></InfoBox>
         </div>
 
         <Map
+          casesType={casesType}
           countries={mapCountries}
           center={mapCenter}
           zoom={mapZoom}
@@ -99,13 +104,12 @@ function App() {
         <CardContent>
           <h3>Live Cases by Country</h3>
           <Table countries={tableData} />
-          <h3>Worldwide new Cases </h3>
+          <h3>Worldwide new {casesType} </h3>
+          <Graph casesType={casesType} />
         </CardContent>
-        <Graph />
       </Card>
     </div>
   );
 }
 
 export default App;
-//************LAST MINUTE 3.55.00 */

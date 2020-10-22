@@ -11,11 +11,20 @@ body {
   justify-content: space-evenly;
 }
 
+.app-dropdown {
+  background-color: white;
+}
+
 .app-header {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
   justify-content: space-between;
+}
+
+.app-header > h1 {
+  color: #fc3c3c;
+  font-size: 2rem;
 }
 
 .app-left {

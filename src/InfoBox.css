@@ -5,6 +5,15 @@
 .infoBox:not(:last-child) {
     margin-right: 15px;
 }
+.infoBox--selected {
+  border-top: 10px solid greenyellow;
+}
+.infoBox--red {
+  border-color: #cc1034;
+}
+.infoBox__cases--green {
+  color: lightgreen!important;
+}
 
 .infoBox-cases {
     color: #cc1034;
