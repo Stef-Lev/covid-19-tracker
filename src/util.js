@@ -4,11 +4,11 @@ import { Circle, Popup } from 'react-leaflet';
 
 const casesSeverityColors = {
     cases: {
-        hex: "#CC1034",
+        hex: " #b40224",
         multiplier: 800,
     },
     recovered: {
-        hex: "#7dd71d",
+        hex: "#41db4b",
         multiplier: 1200,
     },
     deaths: {

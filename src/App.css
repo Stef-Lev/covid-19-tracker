@@ -3,12 +3,12 @@
 }
 
 body {
-  background-color: rgb(0, 0, 0);
+  background-color:#eaeaea;
 }
 .app {
   display: flex;
   justify-content: space-evenly;
-  background-color: rgb(0, 0, 0);
+  background-color: #eaeaea;
   padding: 20px;
 }
 
@@ -24,7 +24,7 @@ body {
 }
 
 .app-header > h1 {
-  color: #fc3c3c;
+  color: #b40224;
   font-size: 2rem;
 }
 
@@ -60,5 +60,20 @@ body {
 @media (max-width: 990px) {
   .app {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 1.2rem!important;
+  }
+  h2 {
+    font-size: 1.1rem!important;
+  }
+  p {
+    font-size: .9rem!important;
+  }
+  .map {
+    height: 300px;
   }
 }
