@@ -24,6 +24,7 @@ function App() {
       .then(res => res.json())
       .then(data => {
         setCountryInfo(data);
+        console.log('%cAPI_WORLD_INFO', 'background-color:#008B8B; font-size: 2rem; color:white;', data);
       });
   }, []);
 
@@ -65,10 +66,9 @@ function App() {
         setCountryInfo(data);
         setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
         setMapZoom(4);
+        console.log(`%cAPI_${data.country}_INFO`, 'background-color:#DC143C; font-size: 2rem; color:white;', data);
       })
   };
-
-  console.log('>>>>>>>>>', countryInfo);
 
   return (
     <div className="app">
