@@ -78,6 +78,10 @@ function App() {
       })
   };
 
+  // @TODO DARK MODE FUNCTIONALITY
+  // @TODO SELECTED TAB FUNCTIONALITY 
+  // @TODO LOCK MAP INTO POSITION
+
   const handleToggle = () => {
     setIsChecked(!isChecked);
 
