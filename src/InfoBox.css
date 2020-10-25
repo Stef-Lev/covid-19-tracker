@@ -5,21 +5,20 @@
 .infoBox:not(:last-child) {
     margin-right: 15px;
 }
-.infoBox--selected {
-  border-top: 10px solid #41db4b;
-}
-.infoBox--red {
-  border-color: #b40224;
-}
-.infoBox__cases--green {
-  color: #41db4b!important;
-}
 
 .infoBox-cases {
-    color: #b40224;
     font-weight: 600;
     font-size: 1.75rem;
     margin-bottom: 0.5rem;
+  }
+  .orange {
+    color: #ff6a3c!important;
+  }
+  .green {
+    color: #41db4b!important;
+  }
+  .red {
+    color:  #b40224!important;
   }
   
   .infoBox-total {
@@ -27,4 +26,12 @@
     font-weight: 700 !important;
     font-size: 0.8rem !important;
     margin-top: 15px !important;
+  }
+  .circle {
+    height: 14px;
+    width: 14px;
+    background-color: lime;
+    color: lime;
+    border-radius: 50%;
+    position: absolute;
   }

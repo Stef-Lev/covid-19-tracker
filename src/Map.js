@@ -6,7 +6,7 @@ import { showDataOnMap } from './util';
 const Map = ({ countries, casesType, center, zoom }) => {
     return (
         <div className="map">
-            <LeafletMap center={center} zoom={zoom}>
+            <LeafletMap center={center} zoom={zoom} minZoom={1} maxZoom={5}>
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'

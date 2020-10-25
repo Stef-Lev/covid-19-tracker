@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Line } from 'react-chartjs-2';
 import numeral from 'numeral';
-
+import { setGraphColors } from './util';
 
 const options = {
     legend: {
@@ -66,6 +65,7 @@ const buildChartData = (data, casesType) => {
 
 function Graph({ casesType, ...props }) {
     const [data, setData] = useState({});
+    const [colorClass, setColorClass] = useState('red');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -81,20 +81,7 @@ function Graph({ casesType, ...props }) {
 
     return (
         <div className={props.className}>
-            {data?.length > 0 && (
-                <Line
-                    data={{
-                        datasets: [
-                            {
-                                backgroundColor: "rgba(204, 16, 52, 0.5)",
-                                borderColor: "#CC1034",
-                                data: data,
-                            },
-                        ],
-                    }}
-                    options={options}
-                />
-            )}
+            {data?.length > 0 && setGraphColors(data, options, casesType)}
         </div>
     );
 }

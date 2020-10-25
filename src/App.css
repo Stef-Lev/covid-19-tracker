@@ -57,13 +57,17 @@ body {
   margin-bottom: 20px;
 }
 
+.darkmode {
+  background-color: rgb(10, 10, 10);
+}
+
 @media (max-width: 990px) {
   .app {
     flex-direction: column;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 468px) {
   h1 {
     font-size: 1.2rem!important;
   }

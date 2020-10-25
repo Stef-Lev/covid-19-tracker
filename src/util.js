@@ -1,10 +1,11 @@
 import React from 'react';
 import numeral from 'numeral';
 import { Circle, Popup } from 'react-leaflet';
+import { Line } from 'react-chartjs-2';
 
 const casesSeverityColors = {
     cases: {
-        hex: " #b40224",
+        hex: "#ff6a3c",
         multiplier: 800,
     },
     recovered: {
@@ -12,10 +13,25 @@ const casesSeverityColors = {
         multiplier: 1200,
     },
     deaths: {
-        hex: "#fb4443",
+        hex: "#b40224",
         multiplier: 2000,
     }
 };
+
+const graphColors = {
+    cases: {
+        backgroundColor: 'rgba(255, 106, 60, .5)',
+        borderColor: 'rgba(255, 106, 60, 1)',
+    },
+    recovered: {
+        backgroundColor: 'rgba(65, 219, 75, .5)',
+        borderColor: 'rgba(65, 219, 75, 1)',
+    },
+    deaths: {
+        backgroundColor: 'rgba(180, 2, 36, .5)',
+        borderColor: 'rgba(180, 2, 36, 1)',
+    }
+}
 
 //Sort countries by cases
 export const sortData = data => {
@@ -64,3 +80,18 @@ export const showDataOnMap = (data, casesType = 'cases') => (
         </Circle>
     ))
 );
+
+export const setGraphColors = (data, options, casesType) => {
+    return (<Line
+        data={{
+            datasets: [
+                {
+                    backgroundColor: graphColors[casesType].backgroundColor,
+                    borderColor: graphColors[casesType].borderColor,
+                    data: data
+                },
+            ],
+        }}
+        options={options}
+    />)
+};
