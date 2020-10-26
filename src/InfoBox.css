@@ -27,11 +27,7 @@
     font-size: 0.8rem !important;
     margin-top: 15px !important;
   }
-  .circle {
-    height: 14px;
-    width: 14px;
-    background-color: lime;
-    color: lime;
-    border-radius: 50%;
-    position: absolute;
+  .MuiCardContent-root {
+    position: relative;
   }
+  

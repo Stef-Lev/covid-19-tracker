@@ -65,7 +65,6 @@ const buildChartData = (data, casesType) => {
 
 function Graph({ casesType, ...props }) {
     const [data, setData] = useState({});
-    const [colorClass, setColorClass] = useState('red');
 
     useEffect(() => {
         const fetchData = async () => {
