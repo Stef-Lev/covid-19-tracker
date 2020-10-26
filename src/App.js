@@ -6,6 +6,9 @@ import Table from './Table';
 import Graph from './Graph';
 import ThemeSwitch from './ThemeSwitch';
 import { sortData, prettyPrintStat } from './util';
+import { ThemeProvider } from "styled-components";
+import { GlobalStyles } from "./GlobalStyles";
+import { lightTheme, darkTheme } from "./Theme"
 import "leaflet/dist/leaflet.css"
 import '../src/App.css';
 
@@ -19,6 +22,7 @@ function App() {
   const [mapCountries, setMapCountries] = useState([]);
   const [casesType, setCasesType] = useState('cases');
   const [isChecked, setIsChecked] = useState(false);
+  const [theme, setTheme] = useState('light');
 
   //Get worldwide data
   useEffect(() => {
@@ -34,6 +38,19 @@ function App() {
   //Get countries
   useEffect(() => {
     getGlobalData();
+  }, []);
+
+  //Get latest theme from localstorage
+  useEffect(() => {
+    let localTheme = window.localStorage.getItem('theme');
+    if (localTheme) {
+      setTheme(localTheme);
+      localTheme === 'light' ? setIsChecked(false) : setIsChecked(true);
+    } else {
+      setTheme('light');
+      setIsChecked(false);
+      window.localStorage.setItem('theme', 'light');
+    }
   }, []);
 
   //API Call to get the data for all the countries
@@ -78,61 +95,70 @@ function App() {
       })
   };
 
-  // @TODO DARK MODE FUNCTIONALITY
-  // @TODO LOCK MAP INTO POSITION
 
-  const handleToggle = () => {
+  // @TODO LOCK MAP INTO POSITION
+  // @TODO FIRST COUNTRY SELECTION BUG
+  // @FIX MOBILE VIEW
+
+
+  const themeToggler = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light');
     setIsChecked(!isChecked);
 
     if (!isChecked) {
       console.log('Dark');
-      window.localStorage.setItem('darkMode', 'ON');
+      window.localStorage.setItem('theme', 'dark');
     } else {
       console.log('Light');
-      window.localStorage.setItem('darkMode', 'OFF');
+      window.localStorage.setItem('theme', 'light');
     }
-  };
+  }
 
   return (
-    <div className={`app ${isChecked ? `darkmode` : ''}`}>
-      <div className="app-left">
-        <div className="app-header">
-          <h1>COVID-19 UPDATE</h1>
-          <ThemeSwitch isChecked={isChecked} onChange={handleToggle} />
-          <FormControl className="app-dropdown">
-            <Select variant="outlined" value={country} onChange={handleCountryChange}>
-              <MenuItem value='Worldwide'>Worldwide</MenuItem>
-              {countries.map((country, index) => (
-                <MenuItem value={country.value} key={index}>{country.name}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </div>
-        <div className="app-stats">
-          <InfoBox title="Cases" cases={prettyPrintStat(countryInfo.todayCases)} total={prettyPrintStat(countryInfo.cases)} onClick={e => setCasesType('cases')}
-            active={casesType === 'cases'} colorClass='orange'></InfoBox>
-          <InfoBox title="Recovered" cases={prettyPrintStat(countryInfo.todayRecovered)} total={prettyPrintStat(countryInfo.recovered)} onClick={e => setCasesType('recovered')}
-            active={casesType === 'recovered'} colorClass='green'></InfoBox>
-          <InfoBox title="Deaths" cases={prettyPrintStat(countryInfo.todayDeaths)} total={prettyPrintStat(countryInfo.deaths)} onClick={e => setCasesType('deaths')}
-            active={casesType === 'deaths'} colorClass='red'></InfoBox>
-        </div>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <>
+        <GlobalStyles />
+        <div className='app'>
+          <div className="app-left">
+            <div className="app-header">
+              <h1>COVID-19 UPDATE</h1>
+              <ThemeSwitch isChecked={isChecked} onChange={themeToggler} />
+              <FormControl className="app-dropdown">
+                <Select variant="outlined" value={country} onChange={handleCountryChange}>
+                  <MenuItem value='Worldwide'>Worldwide</MenuItem>
+                  {countries.map((country, index) => (
+                    <MenuItem value={country.value} key={index}>{country.name}</MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </div>
+            <div className="app-stats">
+              <InfoBox title="Cases" cases={prettyPrintStat(countryInfo.todayCases)} total={prettyPrintStat(countryInfo.cases)} onClick={e => setCasesType('cases')}
+                active={casesType === 'cases'} colorClass='orange'></InfoBox>
+              <InfoBox title="Recovered" cases={prettyPrintStat(countryInfo.todayRecovered)} total={prettyPrintStat(countryInfo.recovered)} onClick={e => setCasesType('recovered')}
+                active={casesType === 'recovered'} colorClass='green'></InfoBox>
+              <InfoBox title="Deaths" cases={prettyPrintStat(countryInfo.todayDeaths)} total={prettyPrintStat(countryInfo.deaths)} onClick={e => setCasesType('deaths')}
+                active={casesType === 'deaths'} colorClass='red'></InfoBox>
+            </div>
 
-        <Map
-          casesType={casesType}
-          countries={mapCountries}
-          center={mapCenter}
-          zoom={mapZoom}
-        />
-      </div>
-      <Card className="app-right">
-        <CardContent>
-          <h3>Live Cases by Country</h3>
-          <Table countries={tableData} />
-          <h3 className="app-graphTitle" >Worldwide new {casesType} </h3>
-          <Graph className="app-graph" casesType={casesType} colorClass={['orange', 'green', 'red']} />
-        </CardContent>
-      </Card>
-    </div>
+            <Map
+              casesType={casesType}
+              countries={mapCountries}
+              center={mapCenter}
+              zoom={mapZoom}
+            />
+          </div>
+          <Card className="app-right">
+            <CardContent>
+              <h3>Live Cases by Country</h3>
+              <Table countries={tableData} />
+              <h3 className="app-graphTitle" >Worldwide new {casesType} </h3>
+              <Graph className="app-graph" casesType={casesType} colorClass={['orange', 'green', 'red']} />
+            </CardContent>
+          </Card>
+        </div>
+      </>
+    </ThemeProvider>
   );
 }
 
