@@ -79,7 +79,6 @@ function App() {
   };
 
   // @TODO DARK MODE FUNCTIONALITY
-  // @TODO SELECTED TAB FUNCTIONALITY 
   // @TODO LOCK MAP INTO POSITION
 
   const handleToggle = () => {
@@ -95,7 +94,7 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div className={`app ${isChecked ? `darkmode` : ''}`}>
       <div className="app-left">
         <div className="app-header">
           <h1>COVID-19 UPDATE</h1>
