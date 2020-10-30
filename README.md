@@ -1,8 +1,6 @@
 ### To see the deployed project click [here](https://stef-lev.github.io/covid-19-tracker).
 
-## Available Scripts
-
-In the project directory, you can run:
+To run the app locally, in the project directory, you can run:
 
 ### `npm start`
 
