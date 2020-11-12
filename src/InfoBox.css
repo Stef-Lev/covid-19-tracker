@@ -21,13 +21,17 @@
     color:  #b40224!important;
   }
   
+  .total-label{
+    color: #6c757d;
+    font-weight: 400;
+  }
+  
   .infoBox-total {
     color: #6c757d;
-    font-weight: 700 !important;
-    font-size: 0.8rem !important;
-    margin-top: 15px !important;
+    font-weight: 700!important;
   }
   .MuiCardContent-root {
     position: relative;
+    text-align: center;
   }
   

@@ -23,12 +23,15 @@
 }
 .info-container {
     width: 150px;
+    text-align: center;
   }
 
 .info-flag {
+    margin: 0 auto 10px;
     height: 80px;
-    width: 100%;
+    width: 80%;
     background-size: cover;
+    background-position: center;
     border-radius: 8px;
 }
 .info-confirmed,
@@ -43,3 +46,12 @@
         margin-bottom: 20px;
     }
   }
+
+@media (max-width: 468px) {
+    .info-confirmed,
+.info-recovered,
+.info-deaths {
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+}

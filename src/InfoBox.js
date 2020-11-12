@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent, Typography } from '@material-ui/core';
-import Circle from './Circle';
+import Active from './Active';
 import './InfoBox.css'
 
 function InfoBox({ title, cases, total, colorClass, active, ...props }) {
@@ -10,8 +10,9 @@ function InfoBox({ title, cases, total, colorClass, active, ...props }) {
             <CardContent>
                 <Typography className="infoBox-title" color="textSecondary">{title}</Typography>
                 <h2 className={`infoBox-cases`}>{cases}</h2>
-                <Typography className="infoBox-total" color="textSecondary">Total: {total}</Typography>
-                <Circle className={active ? `${colorClass}-selected` : ''} />
+                <h5 className="total-label">Total</h5>
+                <Typography className="infoBox-total" color="textSecondary">{total}</Typography>
+                <Active className={active ? `${colorClass}-selected` : ''} />
             </CardContent>
         </Card>
     )

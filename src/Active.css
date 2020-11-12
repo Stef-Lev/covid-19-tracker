@@ -1,0 +1,22 @@
+.active {
+    position: relative;
+    margin: 16px 0 0;
+    border: 1px solid rgba(37, 37, 37, .3);
+    height: 10px;
+    width: 100%;
+    color: rgb(37, 37, 37);
+    border-radius: 20px;
+    box-shadow: 1px 1px rgba(37, 37, 37, .4);
+  }
+
+  .glow {
+      position: absolute;
+      height: 3px;
+      width: 3px;
+      top: 2px;
+      right: 3px;
+      z-index: 2;
+      background-color: rgb(224, 224, 224);
+      border-radius: 50%;
+  }
+  

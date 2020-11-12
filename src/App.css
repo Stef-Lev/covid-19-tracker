@@ -63,15 +63,33 @@
   background-color:  #b40224;
 }
 
-@media (max-width: 990px) {
+@media (max-width: 1355px) and (min-width: 1150px) {
+  .app-header {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 1149px) {
   .app {
     flex-direction: column;
   }
 }
 
+@media (max-width: 668px) {
+  .app-header {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
 @media (max-width: 468px) {
   h1 {
-    font-size: 1.2rem!important;
+    font-size: 1.6rem!important;
   }
   h2 {
     font-size: 1.1rem!important;
