@@ -13,16 +13,19 @@ import "leaflet/dist/leaflet.css"
 import '../src/App.css';
 
 function App() {
+  const worldCenter = { lat: 34, lng: 0 }
   const [countries, setCountries] = useState([]);
-  const [country, setCountry] = useState('Worldwide');
+  const [country, setCountry] = useState('worldwide');
   const [countryInfo, setCountryInfo] = useState({});
   const [tableData, setTableData] = useState([]);
-  const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: 30.4796 });
-  const [mapZoom, setMapZoom] = useState(3);
+  const [mapCenter, setMapCenter] = useState(worldCenter);
+  const [mapZoom, setMapZoom] = useState(2);
   const [mapCountries, setMapCountries] = useState([]);
   const [casesType, setCasesType] = useState('cases');
   const [isChecked, setIsChecked] = useState(false);
   const [theme, setTheme] = useState('light');
+
+
 
   //Get worldwide data
   useEffect(() => {
@@ -30,7 +33,7 @@ function App() {
       .then(res => res.json())
       .then(data => {
         setCountryInfo(data);
-        console.log('%cAPI_WORLD_INFO', 'background-color:#008B8B; font-size: 2rem; color:white;', data);
+        console.log('%cAPI_WORLD_INFO', 'background-color:#008B8B; font-size: 1.2rem; color:white;', data);
       });
   }, []);
 
@@ -76,7 +79,7 @@ function App() {
     const countryCode = e.target.value;
     setCountry(countryCode);
 
-    const url = countryCode === 'Worldwide' ? 'https://disease.sh/v3/covid-19/all' : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+    const url = countryCode === 'worldwide' ? 'https://disease.sh/v3/covid-19/all' : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
 
     //Call the data of the selected country
     await fetch(url)
@@ -84,21 +87,22 @@ function App() {
       .then(data => {
         setCountry(countryCode);
         setCountryInfo(data);
-        if (countryCode !== 'Worldwide') {
-          setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
-          setMapZoom(4);
-        } else {
-          setMapCenter({ lat: 34.80746, lng: -40.4796 });
-          setMapZoom(2);
-        }
+
+        countryCode === 'worldwide'
+          ? setMapCenter(worldCenter)
+          : setMapCenter({ lat: data.countryInfo.lat, lng: data.countryInfo.long })
+        countryCode === 'worldwide'
+          ? setMapZoom(2)
+          : setMapZoom(4);
+
         console.log(`%cAPI_${data.country}_INFO`, 'background-color:#DC143C; font-size: 2rem; color:white;', data);
       })
   };
 
 
-  // @TODO LOCK MAP INTO POSITION
+  // @TODO LOCK MAP INTO POSITION DONE
   // @TODO FIRST COUNTRY SELECTION BUG
-  // @FIX MOBILE VIEW
+  // @FIX MOBILE VIEW DONE
 
 
   const themeToggler = () => {
@@ -125,7 +129,7 @@ function App() {
               <ThemeSwitch isChecked={isChecked} onChange={themeToggler} />
               <FormControl className="app-dropdown">
                 <Select variant="outlined" value={country} onChange={handleCountryChange}>
-                  <MenuItem value='Worldwide'>Worldwide</MenuItem>
+                  <MenuItem value='worldwide'>Worldwide</MenuItem>
                   {countries.map((country, index) => (
                     <MenuItem value={country.value} key={index}>{country.name}</MenuItem>
                   ))}
