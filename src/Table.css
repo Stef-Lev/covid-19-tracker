@@ -1,3 +1,8 @@
+
+table {
+    width: 100%;
+}
+
 .table {
     margin-top: 20px;
     overflow: scroll;

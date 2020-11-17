@@ -53,6 +53,10 @@
   margin-bottom: 20px;
 }
 
+.app-dropdown {
+  border-radius: 5px;
+}
+
 .orange-selected {
   background-color: #ff6a3c;
 }
