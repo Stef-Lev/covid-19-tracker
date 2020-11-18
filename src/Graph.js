@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import numeral from 'numeral';
+import { defaults } from 'react-chartjs-2';
 import { setGraphColors } from './util';
 
 const options = {
@@ -66,6 +67,7 @@ const buildChartData = (data, casesType) => {
 
 function Graph({ casesType, ...props }) {
     const [data, setData] = useState({});
+    defaults.global.defaultFontColor = 'black';
 
     useEffect(() => {
         const fetchData = async () => {

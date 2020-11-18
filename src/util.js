@@ -3,6 +3,7 @@ import numeral from 'numeral';
 import { Circle, Popup } from 'react-leaflet';
 import { Line } from 'react-chartjs-2';
 
+
 const casesSeverityColors = {
     cases: {
         hex: "#ff6a3c",

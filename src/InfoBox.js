@@ -8,10 +8,10 @@ function InfoBox({ title, cases, total, colorClass, active, ...props }) {
     return (
         <Card className={`infoBox ${colorClass}`} onClick={props.onClick}>
             <CardContent>
-                <Typography className="infoBox-title" color="textSecondary">{title}</Typography>
+                <Typography className="infoBox-title">{title}</Typography>
                 <h2 className={`infoBox-cases`}>{cases}</h2>
                 <h5 className="total-label">Total</h5>
-                <Typography className="infoBox-total" color="textSecondary">{total}</Typography>
+                <Typography className="infoBox-total">{total}</Typography>
                 <Active className={active ? `${colorClass}-selected` : ''} />
             </CardContent>
         </Card>

@@ -48,6 +48,9 @@
 .app-graph {
   flex-grow: 1;
 }
+.chartjs-render-monitor {
+  color: blue;
+}
 
 .app-graphTitle {
   margin-top: 20px; 

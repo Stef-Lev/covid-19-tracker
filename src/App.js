@@ -13,7 +13,7 @@ import "leaflet/dist/leaflet.css"
 import '../src/App.css';
 
 function App() {
-  const worldCenter = { lat: 34, lng: 0 }
+  let worldCenter = { lat: 34, lng: 0 };
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState('worldwide');
   const [countryInfo, setCountryInfo] = useState({});
@@ -24,8 +24,6 @@ function App() {
   const [casesType, setCasesType] = useState('cases');
   const [isChecked, setIsChecked] = useState(false);
   const [theme, setTheme] = useState('light');
-
-
 
   //Get worldwide data
   useEffect(() => {
@@ -110,10 +108,10 @@ function App() {
     setIsChecked(!isChecked);
 
     if (!isChecked) {
-      console.log('Dark');
+      console.log('dark');
       window.localStorage.setItem('theme', 'dark');
     } else {
-      console.log('Light');
+      console.log('light');
       window.localStorage.setItem('theme', 'light');
     }
   }
@@ -157,7 +155,11 @@ function App() {
               <h3>Live Cases by Country</h3>
               <Table countries={tableData} />
               <h3 className="app-graphTitle" >Worldwide new {casesType} </h3>
-              <Graph className="app-graph" casesType={casesType} colorClass={['orange', 'green', 'red']} />
+              <Graph
+                className="app-graph"
+                casesType={casesType}
+                colorClass={['orange', 'green', 'red']}
+              />
             </CardContent>
           </Card>
         </div>
