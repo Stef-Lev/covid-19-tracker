@@ -97,11 +97,10 @@ function App() {
       })
   };
 
-
-  // @TODO LOCK MAP INTO POSITION DONE
-  // @TODO FIRST COUNTRY SELECTION BUG!!! NOT DONE 
-  // @FIX MOBILE VIEW DONE
-
+  // @TODO FIRST COUNTRY SELECTION BUG!!! 
+  // @FIX MEDIA QUERIES in APP-LEFT-APP-RIGHT FLEX
+  // CHANGE CHART TEXT ON THEME TOGGLE
+  // CHANGE MAP COLOR ON THEME TOGGLE
 
   const themeToggler = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light');
