@@ -49,9 +49,10 @@
 
 @media (max-width: 468px) {
     .info-confirmed,
-.info-recovered,
-.info-deaths {
-    font-size: 0.9rem;
-    margin-top: 5px;
-}
+    .info-recovered,
+    .info-deaths 
+    {
+        font-size: 0.9rem;
+        margin-top: 5px;
+    }
 }

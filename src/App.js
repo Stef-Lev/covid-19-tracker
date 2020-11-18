@@ -125,7 +125,7 @@ function App() {
         <div className='app'>
           <div className="app-left">
             <div className="app-header">
-              <h1>COVID-19 UPDATE</h1>
+              <h1>COVID-19 DATA</h1>
               <ThemeSwitch isChecked={isChecked} onChange={themeToggler} />
               <FormControl className="app-dropdown">
                 <Select variant="outlined" value={country} onChange={handleCountryChange}>
