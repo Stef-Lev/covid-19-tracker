@@ -27,6 +27,7 @@
 
 .app-left {
   flex: 0.9;
+  margin-right: 20px;
 }
 
 .app-stats {
@@ -37,6 +38,7 @@
 .app-right {
   display: flex;
   flex-direction: column;
+  flex: 0.4 ;
 }
 
 .app-right .MuiCardContent-root {
@@ -71,18 +73,22 @@
   background-color:  #b40224;
 }
 
-@media (max-width: 1355px) and (min-width: 1150px) {
+/* @media (max-width: 1355px) and (min-width: 1150px) {
   .app-header {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
   }
-}
+} */
 
 @media (max-width: 1149px) {
   .app {
     flex-direction: column;
+  }
+  .app-left {
+    margin-bottom: 20px;
+    margin-right: 0;
   }
 }
 
