@@ -1,7 +1,6 @@
 import React from 'react';
 import { FormControlLabel, Switch } from '@material-ui/core';
 
-
 function ThemeSwitch({ isChecked, onChange }) {
     return (
         <div className="switch">
@@ -9,6 +8,7 @@ function ThemeSwitch({ isChecked, onChange }) {
                 control={< Switch
                     checked={isChecked}
                     onChange={onChange}
+                    color="primary"
                 />}
                 label={isChecked ? 'Dark Mode' : 'Light Mode'}
             />

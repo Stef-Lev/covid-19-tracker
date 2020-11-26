@@ -6,7 +6,7 @@ import { Line } from 'react-chartjs-2';
 
 const casesSeverityColors = {
     cases: {
-        hex: "#ff6a3c",
+        hex: "#f28346",
         multiplier: 800,
     },
     recovered: {
@@ -14,7 +14,7 @@ const casesSeverityColors = {
         multiplier: 1200,
     },
     deaths: {
-        hex: "#b40224",
+        hex: "#ff4852",
         multiplier: 2000,
     }
 };

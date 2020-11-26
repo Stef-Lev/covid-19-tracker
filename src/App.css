@@ -21,7 +21,7 @@
 }
 
 .app-header > h1 {
-  color: #b40224;
+  color: #ff4852;
   font-size: 2rem;
 }
 
@@ -64,23 +64,14 @@
 }
 
 .orange-selected {
-  background-color: #ff6a3c;
+  background-color: #f28346;
 }
 .green-selected {
   background-color: #41db4b;
 }
 .red-selected {
-  background-color:  #b40224;
+  background-color:  #ff4852;
 }
-
-/* @media (max-width: 1355px) and (min-width: 1150px) {
-  .app-header {
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-  }
-} */
 
 @media (max-width: 1149px) {
   .app {
@@ -90,6 +81,9 @@
     margin-bottom: 20px;
     margin-right: 0;
   }
+}
+.Mui-checked .MuiSwitch-thumb {
+  color: #3a71c8;
 }
 
 @media (max-width: 668px) {
